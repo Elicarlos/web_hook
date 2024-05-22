@@ -29,8 +29,13 @@ def send_message(request):
 @csrf_exempt
 def hook_receiver_view(request):
     if request.method == 'POST':
+        data = json.loads(request.body.decode('utf-8'))
+        print(data)
+        
+    else:
         print(request.body)
-        return HttpResponse("Sucesso")
+    
+    return HttpResponse("Sucesso")
 
     
     
