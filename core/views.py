@@ -3,6 +3,8 @@ from django.shortcuts import render
 import requests
 import json
 
+from django.views.decorators.http import require_http_methods
+
 # Create your views here.
 
 def home(request):
@@ -21,6 +23,13 @@ def send_message(request):
     
     requests.post(link, data=dados)
     return HttpResponse('sucesso')
+
+
+@require_http_methods(['GET', 'POST'])
+def hook_receiver_view(request):
+    print(request.data)
+    return HttpResponse("Sucesso")
+
     
     
     

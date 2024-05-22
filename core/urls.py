@@ -6,5 +6,6 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name="home"),
-    path('send_message', views.send_message)
+    path('send_message/', views.send_message),
+    path("hook_receiver_view/", views.hook_receiver_view)
 ]
