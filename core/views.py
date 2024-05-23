@@ -40,7 +40,17 @@ def hook_receiver_view(request):
         parcelas = data.get('parcelas')
         
         
-        Cliente.save(nome, email, status, valor, forma_pagamento, parcelas)
+        c1 = Cliente(
+            nome=nome, 
+            email = email, 
+            status = status, 
+            valor = valor, 
+            forma_pagamento = forma_pagamento, 
+            parcelas = parcelas
+        )
+        c1.save()
+        
+        
         cliente = Cliente.objects.get(email=email).first()
         dados = {
                 "nome": cliente.nome, 
