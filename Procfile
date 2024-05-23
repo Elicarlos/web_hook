@@ -1,1 +1,1 @@
-web: gunicorn webhookgit .wsgi --log-file -
+web: gunicorn webhook.wsgi --log-file -
