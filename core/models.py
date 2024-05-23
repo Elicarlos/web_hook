@@ -9,7 +9,7 @@ class Cliente(models.Model):
     nome = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     status = models.CharField(max_length=100)
-    valor = models.DecimalField(max_digits=100, decimal_places=2)
+    valor = models.CharField(max_length=100)
     forma_pagamento = models.CharField(max_length=100)
     parcelas = models.IntegerField()
     
