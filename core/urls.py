@@ -9,5 +9,5 @@ urlpatterns = [
     path('send_message/', views.send_message),
     path("hook_receiver_view/", views.hook_receiver_view),
     path('whats/', views.webhook_verify, name="webhook_verify"),
-    path('whats/post/', views.webhook, name="webhook")
+    path('whats/post/', views.webhook, name="webhook"),
 ]
