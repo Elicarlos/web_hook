@@ -49,7 +49,7 @@ def hook_receiver_view(request):
                 forma_pagamento=forma_pagamento, 
                 parcelas=parcelas
             )
-            c1.save()
+            # c1.save()
             
             # Obtenção do cliente
             cliente = Cliente.objects.get(email=email)
@@ -121,7 +121,8 @@ def webhook_verify(request):
     challenge = request.GET.get('hub.chanllege')
     
     if mode == 'subscribe' and token == WEBHOOK_VERIFY_TOKEN:
-        return HttpResponse(challenge)
+        print("ok")
+        # return HttpResponse(challenge)
     
     else:
         return HttpResponse(status=403)
