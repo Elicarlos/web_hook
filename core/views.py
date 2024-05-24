@@ -78,7 +78,55 @@ def hook_receiver_view(request):
     
     return HttpResponse("Sucesso")
 
+ 
+ 
+# def webhook_whatsapp(request):
+#     if request.method == "GET":
+#         if request.args.get('hub.verify_token') == VERIFY_TOKEN:
+#             return request.args.get('hub.challenge')
+        
+#         return "Authentication failed. invalid Tokem"
     
     
+#     client = WhatsAppWrapper()
+    
+#     response = client.process_webhook_notification(request.get_json())
+    
+#     return jsonify("status": "success")
+
+
+# def process_webhook_notification(self, data):
+#     response  = []
+    
+    
+#     for entry in data["entry"]:
+#         for change in entry["changes"]:
+#             response.append(
+#                 {
+#                     "type": change["field"],
+#                     "from": change["value"]["metadata"]["display_phone_number"],
+#                 }
+#             )
+            
+#     return response
+
+
+WEBHOOK_VERIFY_TOKEN = 'meutoken'
+
+def webhook_verify(request):
+    mode = request.GET.get('hub.mode')
+    token = request.GET.get('hub.verify_token')
+    challenge = request.GET.get('hub.chanllege')
+    
+    if mode == 'subscribe' and token == WEBHOOK_VERIFY_TOKEN:
+        return HttpResponse(challenge)
+    
+    else:
+        return HttpResponse(status=403)
+            
+    
+    
+def webhook(request):
+    pass
     
     
