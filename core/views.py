@@ -115,7 +115,9 @@ WEBHOOK_VERIFY_TOKEN = 'meutoken'
 
 def webhook_verify(request):
     mode = request.GET.get('hub.mode')
+    
     token = request.GET.get('hub.verify_token')
+    
     challenge = request.GET.get('hub.chanllege')
     
     if mode == 'subscribe' and token == WEBHOOK_VERIFY_TOKEN:
