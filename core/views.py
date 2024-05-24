@@ -113,17 +113,14 @@ def hook_receiver_view(request):
 
 WEBHOOK_VERIFY_TOKEN = 'meutoken'
 
+@csrf_exempt
 def webhook_verify(request):
     mode = request.GET.get('hub.mode')
-    
     token = request.GET.get('hub.verify_token')
-    
-    challenge = request.GET.get('hub.chanllege')
-    
+    challenge = request.GET.get('hub.challenge')
+
     if mode == 'subscribe' and token == WEBHOOK_VERIFY_TOKEN:
-        print("ok")
-        # return HttpResponse(challenge)
-    
+        return HttpResponse(challenge, status=200)
     else:
         return HttpResponse(status=403)
             
